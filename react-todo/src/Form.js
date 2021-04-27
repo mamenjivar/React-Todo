@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import View from './View';
 
 class Form extends Component {
     constructor(props) {
@@ -44,6 +45,8 @@ class Form extends Component {
                     />
                     <button type="submit">Submit</button>
                 </form>
+
+                <View listTodos={this.state.todoItems}/>
             </div>
         )
     }
