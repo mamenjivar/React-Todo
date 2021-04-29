@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class View extends Component {
-    render() {
+const View = (props) => {
+        const todoStyle= {
+            listStyleType: "none",
+        }
         return (
             <div>
-                <h3>This is View component</h3>
-                {this.props.listTodos.map((list) => {
-                    return <li>{list}</li>
-                })}
+                <h3>View Todos</h3>
+                <ul>
+                    <li style={todoStyle}>{props.listTodos}<button>Remove</button></li>
+                </ul>
             </div>
-        )
-    }
+        );
 }
 
 export default View;

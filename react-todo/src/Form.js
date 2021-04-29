@@ -1,55 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import View from './View';
 
-class Form extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            todoItems: [],
-            value: ''
-        }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
+const Form = () => {
+    const [todoItem, setTodoItem] = useState('');
+    const [submitItem, setSubmitItem] = useState('');
 
     // on form submit
-    handleSubmit(event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
-        let newItem = this.state.value;
+        setSubmitItem(todoItem);
 
-        this.setState({
-            todoItems: [...this.state.todoItems, newItem],
-            value: ''
-        })
+        setTodoItem('');
     }
 
-    handleChange(event) {
-        this.setState({
-            value: event.target.value
-        })
+    const handleChange = (event) => {
+        setTodoItem(event.target.value);
     }
 
-    render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <input 
                         type="text" 
                         name="item" 
                         placeholder="Write todo here"
-                        value={this.state.value}
-                        onChange={this.handleChange}
+                        value={todoItem}
+                        onChange={handleChange}
                     />
                     <button type="submit">Submit</button>
                 </form>
 
-                <View listTodos={this.state.todoItems}/>
+                <View listTodos={submitItem}/>
             </div>
-        )
-    }
+        );
 }
 
 export default Form;
