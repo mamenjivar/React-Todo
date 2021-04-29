@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import View from './View';
 
-const Form = () => {
+const Form = (props) => {
     const [todoItem, setTodoItem] = useState('');
-    const [submitItem, setSubmitItem] = useState('');
 
     // on form submit
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        setSubmitItem(todoItem);
-
+        // pass state up
+        props.onAddItem(todoItem);
         setTodoItem('');
     }
 
@@ -30,8 +28,6 @@ const Form = () => {
                     />
                     <button type="submit">Submit</button>
                 </form>
-
-                <View listTodos={submitItem}/>
             </div>
         );
 }
