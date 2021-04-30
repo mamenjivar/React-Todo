@@ -7,8 +7,13 @@ const Form = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const todoObject = {
+            task: todoItem,
+            id: Math.random()
+        }
+
         // pass state up
-        props.onAddItem(todoItem);
+        props.onAddItem(todoObject);
         setTodoItem('');
     }
 

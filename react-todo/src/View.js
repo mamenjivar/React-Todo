@@ -8,7 +8,9 @@ const View = (props) => {
             <div>
                 <h3>View Todos</h3>
                 <ul>
-                    <li style={todoStyle}>{props.listTodos}<button>Remove</button></li>
+                    {props.listTodos.map(todoList => 
+                        <li key={todoList.id} style={todoStyle}>{todoList.task}</li>
+                    )}
                 </ul>
             </div>
         );

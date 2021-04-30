@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// DB TODO
+import DUMMY_TODOS from './todo_DB';
+
 // css
 import './App.css';
 
@@ -8,14 +11,14 @@ import Form from './Form';
 import View from './View';
 
 function App() {
-  const [item, setItem] = useState('');
+  const [items, setItems] = useState(DUMMY_TODOS);
 
 
   // pass state down
   const addItemHandler = (item) => {
-    console.log('in App.js')
-    console.log(item);
-    setItem(item);
+    setItems(prevItems => {
+      return [...prevItems, item]
+    });
   }
 
   return (
@@ -24,7 +27,7 @@ function App() {
         <h1>React - Todo</h1>
         <Form onAddItem={addItemHandler}/>
 
-        <View listTodos={item}/>
+        <View listTodos={items}/>
       </header>
     </div>
   );
